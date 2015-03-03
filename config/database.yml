@@ -1,0 +1,19 @@
+default: &default
+  username: soke
+  password:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: soke_development
+
+test:
+  <<: *default
+  database: soke_test
+
+production:
+  <<: *default
+  database: soke_production
+  username: soke
