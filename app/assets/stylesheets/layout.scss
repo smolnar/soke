@@ -1,0 +1,36 @@
+.container {
+  margin-top: 20px;
+  max-width: 940px;
+}
+
+.navbar-default {
+  border: 0;
+  background: none;
+}
+
+.logo {
+  color: #cfcfcf !important;
+  font-size: 50px;
+
+  &:hover {
+    @include transition(all 0.8s ease);
+
+    color: black !important;
+  }
+}
+
+.search-index {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.search {
+  #q {
+    border: none;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    outline: 0;
+  }
+}
