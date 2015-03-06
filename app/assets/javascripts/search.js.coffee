@@ -29,7 +29,6 @@ class window.Search
           callback.call(@)
 
   setSuggestionsElementSize: ->
-    $('#suggestions').width($('#q').width() + 1)
-
+    $('#suggestions').width($('#q').width() + 2)
 
 window.search = new Search()
