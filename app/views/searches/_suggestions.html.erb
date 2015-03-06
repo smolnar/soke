@@ -1,0 +1,5 @@
+<ul id="suggestions" class="list-unstyled">
+  <% @suggestions.each do |query| %>
+    <li><%= link_to query, search_path(q: query) %></li>
+  <% end %>
+</ul>

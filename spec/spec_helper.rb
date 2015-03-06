@@ -10,7 +10,7 @@ require 'capybara/rails'
 require 'capybara/poltergeist'
 
 Capybara.default_selector  = :css
-Capybara.javascript_driver = ENV['DRIVER'] ? ENV['DRIVER'].to_sym : :poltergeist
+Capybara.javascript_driver = ENV['DRIVER'] ? ENV['DRIVER'].to_sym : :selenium
 
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, window_size: [1600, 1200], inspector: true)

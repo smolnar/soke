@@ -22,15 +22,42 @@
 .search-index {
   margin-top: 100px;
   text-align: center;
+
+  #q {
+    width: 560px;
+    font-size: 50px;
+  }
+
+  #suggestions {
+    width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+  }
+}
+
+.search-with-query {
+  #q {
+    font-size: 25px;
+  }
 }
 
 .search {
   #q {
     border: none;
-    font-size: 50px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 20px;
     outline: 0;
+  }
+}
+
+#suggestions {
+  margin-top: 10px;
+  padding-left: 20px;
+  font-size: 25px;
+
+  a {
+    color: black;
   }
 }

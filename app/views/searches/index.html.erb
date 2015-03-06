@@ -1,0 +1,8 @@
+<div class="<%= @query ? 'search-with-query' : 'search-index' %>">
+  <%= form_tag search_path, class: 'search', autocomplete: :off do %>
+    <%= text_field_tag :q, nil, placeholder: ' Just start typing ...', autofocus: true %>
+  <% end %>
+
+  <ul id="suggestions">
+  </ul>
+</div>

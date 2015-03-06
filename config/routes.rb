@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'search#index'
+  root to: 'searches#index', as: :search
 
-  resource :search
+  resource :search, only: [:index] do
+    get :suggest
+  end
 end
