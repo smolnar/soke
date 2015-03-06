@@ -13,5 +13,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require turbolinks
+#= require handlebars.runtime
+#= require_tree ./templates
+#= require fixes
 #= require utilities
 #= require_tree .
