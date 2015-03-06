@@ -1,8 +1,21 @@
-<div class="<%= @query ? 'search-with-query' : 'search-index' %>">
-  <%= form_tag search_path, class: 'search', autocomplete: :off do %>
-    <%= text_field_tag :q, nil, placeholder: ' Just start typing ...', autofocus: true %>
+<section id="search-form" class="<%= @query ? 'search-with-query' : 'search-index' %>">
+  <%= form_tag search_path, method: :get, class: 'search', autocomplete: :off do %>
+    <%= text_field_tag :q, @query, placeholder: ' Just start typing ...', autofocus: true %>
   <% end %>
+</section>
 
-  <ul id="suggestions">
-  </ul>
-</div>
+<% if @results %>
+  <section id="search-results">
+    <ul class="list-unstyled">
+      <% @results.each do |result| %>
+        <li>
+          <a href="<%= result.url %>" ><%= result.title %></a>
+
+          <p>
+            <%= result.description %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>

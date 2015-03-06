@@ -96,6 +96,11 @@ GEM
     guard-rspec (4.3.1)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    handlebars_assets (0.18)
+      execjs (>= 1.2.9)
+      multi_json
+      sprockets (>= 2.0.3)
+      tilt
     hike (1.2.3)
     hirb (0.7.2)
     hitimes (1.2.2)
@@ -229,6 +234,7 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    vcr (2.9.3)
     websocket (1.2.1)
     websocket-driver (0.4.0)
     xpath (2.0.0)
@@ -246,6 +252,7 @@ DEPENDENCIES
   font-awesome-rails (~> 4.0.3)
   fuubar
   guard-rspec
+  handlebars_assets
   hirb
   jbuilder (~> 2.0)
   jquery-rails
@@ -260,5 +267,7 @@ DEPENDENCIES
   scout!
   selenium-webdriver
   spring
+  squire
   turbolinks
   uglifier (>= 1.3.0)
+  vcr

@@ -1,0 +1,12 @@
+defaults: &defaults
+  bing:
+    key: TODO
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
