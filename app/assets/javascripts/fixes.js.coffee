@@ -1,3 +1,6 @@
+# Progressbar
+Turbolinks.enableProgressBar()
+
 # Shorthand for HandlebarsTemplates
 window.templates = HandlebarsTemplates
 
