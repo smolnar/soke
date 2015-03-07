@@ -91,6 +91,8 @@ ul.user-controls {
 
 .search-with-query {
   margin-bottom: 40px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   #q {
     border: 1px solid #dfdfdf;
@@ -107,6 +109,7 @@ ul.user-controls {
     background-color: white;
     position: absolute;
     padding-top: 20px;
+    padding-left: 30px;
   }
 }
 
@@ -129,14 +132,24 @@ ul.user-controls {
 }
 
 #search-results {
-  padding-left: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 
   li {
     margin-bottom: 30px;
   }
 }
 
-// Sign In
+#evaluations {
+  padding-left: 15px;
+  padding-right: 15px;
+
+  a {
+    font-size: 12pt;
+  }
+}
+
+// Devise
 .devise-form {
   max-width: 330px;
   padding: 15px;
