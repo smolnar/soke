@@ -19,18 +19,18 @@
     </ul>
 
     <ul class="pager">
+      <li class="previous <%= @page == 1 ? :disabled : nil %>">
+        <%= link_to "&larr; Previous".html_safe, search_path(q: @query, page: @page - 1) %>
+      </li>
+
       <% unless @page == 1 %>
-        <li class="previous">
-          <%= icon_link_to :home, 'Start', search_path(q: @query) %>
+        <li>
+          <%= icon_link_to :home, 'Home', search_path(q: @query) %>
         </li>
       <% end %>
 
       <li class="next">
         <%= link_to "Next &rarr;".html_safe, search_path(q: @query, page: @page + 1), class: :next %>
-      </li>
-
-      <li class="next <%= @page == 1 ? :disabled : nil %>">
-        <%= link_to "&larr; Previous".html_safe, search_path(q: @query, page: @page - 1) %>
       </li>
     </ul>
   </section>
