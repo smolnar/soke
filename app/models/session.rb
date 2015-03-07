@@ -1,6 +1,4 @@
 class Session < ActiveRecord::Base
-  belongs_to :user
-
-  has_many :searches
+  has_many :searches, -> { order(:created_at) }
   has_many :queries, through: :searches
 end

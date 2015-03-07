@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
          :validatable
          # TODO implement
          # :confirmable
+
+  has_many :searches, -> { order(:created_at) }
+  has_many :sessions, through: :searches
+  has_many :queries,  through: :searches
 end

@@ -3,6 +3,7 @@ class CreateSearches < ActiveRecord::Migration
     create_table :searches do |t|
       t.references :query,   index: true, null: false
       t.references :session, index: true
+      t.references :user,    index: true, null: false
 
       t.timestamps
     end

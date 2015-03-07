@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307144734) do
+ActiveRecord::Schema.define(version: 20150307180831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150307144734) do
   end
 
   add_index "pages", ["bing_uuid"], name: "index_pages_on_bing_uuid", using: :btree
+  add_index "pages", ["url"], name: "index_pages_on_url", unique: true, using: :btree
 
   create_table "queries", force: true do |t|
     t.string   "value",      null: false
@@ -36,10 +37,9 @@ ActiveRecord::Schema.define(version: 20150307144734) do
   add_index "queries", ["value"], name: "index_queries_on_value", unique: true, using: :btree
 
   create_table "results", force: true do |t|
-    t.integer  "search_id",                  null: false
-    t.integer  "page_id",                    null: false
-    t.integer  "position",                   null: false
-    t.boolean  "clicked",    default: false, null: false
+    t.integer  "search_id",  null: false
+    t.integer  "page_id",    null: false
+    t.integer  "position",   null: false
     t.datetime "clicked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -50,20 +50,19 @@ ActiveRecord::Schema.define(version: 20150307144734) do
   create_table "searches", force: true do |t|
     t.integer  "query_id",   null: false
     t.integer  "session_id"
+    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "searches", ["query_id"], name: "index_searches_on_query_id", using: :btree
   add_index "searches", ["session_id"], name: "index_searches_on_session_id", using: :btree
+  add_index "searches", ["user_id"], name: "index_searches_on_user_id", using: :btree
 
   create_table "sessions", force: true do |t|
-    t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
