@@ -3,7 +3,8 @@ require 'spec_helper'
 describe Bing::Search do
   describe '.get' do
     it 'searches bing for results' do
-      # TODO figure out VCR
+      Bing::Search.stub(:download).with('https://api.datamarket.azure.com/Bing/Search/v1/Web?Query=\'google\'&$format=json&$top=10&$skip=0') { fixture('bing/google.json').read }
+
       results = Bing::Search.get('google')
 
       expect(results.size).to eql(10)

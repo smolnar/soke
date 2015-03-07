@@ -3,24 +3,19 @@ module Bing
     attr_accessor :query, :page
 
     def self.get(query, page: 0, **options)
-      search = Search.new
+      url     = "https://api.datamarket.azure.com/Bing/Search/v1/Web?Query='#{query}'&$format=json&$top=10&$skip=#{page * 10}"
+      data    = download(url)
+      json    = JSON.parse(data, symbolize_names: true)
+      results = Array.new
 
-      search.query = query
-      search.page  = page
+      json[:d][:results].each do |result|
+        results << OpenStruct.new(title: result[:Title], description: result[:Description], url: result[:Url], bing_uuid: result[:ID])
+      end
 
-      search.perform
+      Results.new(results)
     end
 
-    def perform
-      url  = "https://api.datamarket.azure.com/Bing/Search/v1/Web?Query='#{@query}'&$format=json&$top=10&$skip=#{page * 10}"
-      data = connect(url)
-
-      parse(data)
-    end
-
-    private
-
-    def connect(url)
+    def self.download(url)
       uri  = URI.encode(url)
       curl = Curl::Easy.new(uri)
 
@@ -32,15 +27,7 @@ module Bing
       curl.body_str
     end
 
-    def parse(data)
-      json    = JSON.parse(data, symbolize_names: true)
-      results = Array.new
-
-      json[:d][:results].each do |result|
-        results << OpenStruct.new(title: result[:Title], description: result[:Description], url: result[:Url])
-      end
-
-      Results.new(results)
+    def self.parse(data)
     end
   end
 end

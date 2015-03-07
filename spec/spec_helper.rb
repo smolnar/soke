@@ -9,19 +9,11 @@ require 'capybara/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
 
-# VCR
-require 'vcr'
-
 Capybara.default_selector  = :css
 Capybara.javascript_driver = ENV['DRIVER'] ? ENV['DRIVER'].to_sym : :selenium
 
 Capybara.register_driver :poltergeist do |app|
   Capybara::Poltergeist::Driver.new(app, window_size: [1600, 1200], inspector: true)
-end
-
-VCR.configure do |config|
-  config.cassette_library_dir = "fixtures/cassettes"
-  # config.hook_into :webmock # or :fakeweb
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc,
