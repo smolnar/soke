@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          # TODO implement
          # :confirmable
 
-  has_many :searches, -> { order(:created_at) }
-  has_many :sessions, through: :searches
-  has_many :queries,  through: :searches
+  has_many :searches
+  has_many :sessions, -> { uniq }, through: :searches
+  has_many :queries,  -> { uniq }, through: :searches
 end

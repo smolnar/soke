@@ -1,4 +1,4 @@
 class Session < ActiveRecord::Base
-  has_many :searches, -> { order(:created_at) }
-  has_many :queries, through: :searches
+  has_many :searches
+  has_many :queries, -> { uniq }, through: :searches
 end

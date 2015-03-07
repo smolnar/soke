@@ -1,8 +1,8 @@
 class Query < ActiveRecord::Base
   validates :value, presence: true
 
-  has_many :searches, -> { order(:created_at) }
-  has_many :sessions, through: :searches
-  has_many :results , through: :searches
-  has_many :pages,    through: :results
+  has_many :searches
+  has_many :sessions, -> { uniq }, through: :searches
+  has_many :results , -> { uniq }, through: :searches
+  has_many :pages,    -> { uniq }, through: :results
 end
