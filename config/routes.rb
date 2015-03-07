@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get :suggest
   end
 
-  resources :sessions, only: [] do
+  resources :sessions, only: [:index] do
     resources :searches, only: [] do
       get :merge, on: :member
     end

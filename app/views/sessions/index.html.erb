@@ -1,0 +1,17 @@
+<section>
+  <% @sessions.each_with_index do |session, index| %>
+    <h3>
+      Session #<%= index %>
+
+      <small><%= l(session.created_at, format: :long) %></small>
+    </h3>
+
+    <ul>
+      <% session.queries.each do |query| %>
+        <li><h5><%= query.value %></h5></li>
+      <% end  %>
+    </ul>
+
+    <hr />
+  <% end %>
+</section>
