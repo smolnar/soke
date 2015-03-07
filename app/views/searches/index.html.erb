@@ -4,7 +4,7 @@
   <% end %>
 </section>
 
-<% if @query %>
+<% if @query && !@search.session %>
   <section id="evaluations">
     <div id="evaluation-1" class="bs-callout bs-callout-default">
       <h4>
@@ -37,7 +37,9 @@
     <ul class="list-unstyled">
       <% @results.each do |result| %>
         <li class="result">
-          <a href="<%= result.url %>"><%= result.title %></a>
+          <a href="<%= result.url %>" target="_blank"><%= result.title %></a>
+
+          <div class="text-muted"><%= result.url  %></div>
 
           <p>
             <%= result.description %>
