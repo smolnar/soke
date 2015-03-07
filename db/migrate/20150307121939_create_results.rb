@@ -4,8 +4,7 @@ class CreateResults < ActiveRecord::Migration
       t.references :search, null: false
       t.references :page,   null: false
 
-      t.integer  :position,   null: false
-      t.boolean  :clicked,    null: false, default: false
+      t.integer  :position, null: false
       t.datetime :clicked_at
 
       t.timestamps
