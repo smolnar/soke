@@ -19,7 +19,7 @@ describe 'Search' do
   end
 
   it 'shows results for given query', js: true do
-    Bing::Search.stub(:download) { fixture('bing/google-maps.json').read }
+    Bing::Search.stub(:download) { fixture('bing/google_maps.json').read }
 
     visit search_path
 
