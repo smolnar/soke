@@ -20,6 +20,7 @@ gem 'handlebars_assets'
 # Utilities
 gem 'scout', github: 'smolnar/scout', branch: :master
 gem 'squire'
+gem 'devise'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring', group: :development
@@ -41,11 +42,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'poltergeist', '~> 1.5.0'
   gem 'guard-rspec'
-end
-
-group :test do
-  gem 'vcr'
-  # gem 'webmock'
 end
 
 # Use ActiveModel has_secure_password

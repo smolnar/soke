@@ -1,0 +1,9 @@
+<% if messages.any? %>
+  <div id="flash" class="flash">
+    <% messages.each do |type, message| %>
+      <div class="alert alert-<%= flash_message_type_to_class(type) %> alert-dismissable">
+        <%= message.html_safe %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
