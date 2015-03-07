@@ -1,8 +1,8 @@
-class CreateResultsPages < ActiveRecord::Migration
+class CreateResults < ActiveRecord::Migration
   def change
-    create_table :results_pages do |t|
+    create_table :results do |t|
       t.references :search, null: false
-      t.references :result, null: false
+      t.references :page,   null: false
 
       t.integer  :position,   null: false
       t.boolean  :clicked,    null: false, default: false
@@ -11,6 +11,6 @@ class CreateResultsPages < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :results_pages, [:search_id, :result_id], unique: true
+    add_index :results, [:search_id, :page_id], unique: true
   end
 end

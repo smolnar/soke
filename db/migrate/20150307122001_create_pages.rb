@@ -1,6 +1,6 @@
-class CreateResults < ActiveRecord::Migration
+class CreatePages < ActiveRecord::Migration
   def change
-    create_table :results do |t|
+    create_table :pages do |t|
       t.string :title,       null: false
       t.string :url,         null: false
       t.text   :description, null: false
@@ -9,6 +9,6 @@ class CreateResults < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :results, :bing_uuid
+    add_index :pages, :bing_uuid
   end
 end
