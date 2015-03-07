@@ -4,10 +4,10 @@
   <h2 class="heading">Sign up</h2>
 
   <%= f.label :email, for: 'email', class: 'sr-only' %>
-  <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email address', autofocus: true, required: true %>
+  <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email address', autofocus: true %>
 
   <%= f.label :password, for: 'password', class: 'sr-only' %>
-  <%= f.password_field :password, id: 'password', class: 'form-control', placeholder: 'Password', required: true %>
+  <%= f.password_field :password, id: 'password', class: 'form-control', placeholder: 'Password' %>
 
   <div class="checkbox">
     <%= link_to 'Did you forget your password?', new_password_path(resource_name), class: 'pull-right' %>
