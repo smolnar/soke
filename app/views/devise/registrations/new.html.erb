@@ -1,13 +1,17 @@
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-signin' }) do |f|  %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'devise-form' }) do |f|  %>
   <%= form_messages_for resource %>
 
-  <h2 class="form-signin-heading">Sign up</h2>
+  <h2 class="heading">Sign up</h2>
 
   <%= f.label :email, for: 'email', class: 'sr-only' %>
-  <%= f.email_field :email, id: 'email', class: 'form-control', placeholder: 'Email address', autofocus: true, required: true %>
+  <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email address', autofocus: true, required: true %>
 
   <%= f.label :password, for: 'password', class: 'sr-only' %>
   <%= f.password_field :password, id: 'password', class: 'form-control', placeholder: 'Password', required: true %>
 
-  <%= f.submit 'Sign up', class: 'btn btn-lg btn-primary btn-block' %>
+  <div class="checkbox">
+    <%= link_to 'Did you forget your password?', new_password_path(resource_name), class: 'pull-right' %>
+  </div>
+
+  <%= f.submit 'Sign me up!', class: 'btn btn-lg btn-primary btn-block' %>
 <% end %>

@@ -12,6 +12,7 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require bootstrap
 #= require turbolinks
 #= require handlebars.runtime
 #= require_tree ./templates

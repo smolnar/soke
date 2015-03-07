@@ -15,12 +15,21 @@
       </div>
 
       <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="TODO">
-              Signed in as <b>smolnar</b>
-            </a>
-          </li>
+        <ul class="pull-right user-controls">
+            <% if user_signed_in? %>
+              <li>
+                <a href="TODO">
+                  <b><%= current_user.email %></b>
+                </a>
+              </li>
+
+              <li>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+            <% end %>
         </ul>
       </div>
     </div>
