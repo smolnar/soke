@@ -5,6 +5,12 @@ Rails.application.routes.draw do
     get :suggest
   end
 
+  resources :sessions, only: [] do
+    resources :searches, only: [] do
+      get :merge, on: :member
+    end
+  end
+
   devise_for :users, path: '', path_names: {
     sign_in: 'login',
     sign_out: 'logout',

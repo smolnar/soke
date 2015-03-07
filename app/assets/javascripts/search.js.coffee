@@ -21,6 +21,7 @@ class window.Search
 
   constructor: ->
     @setup()
+    @setupEvaluation()
 
   setup: ->
     onReady =>
@@ -30,5 +31,10 @@ class window.Search
 
   setSuggestionsElementSize: ->
     $('#suggestions').width($('#q').width() + 2)
+
+  setupEvaluation: ->
+    onReady ->
+      $('#evaluation-1 .no').click -> $('#evaluation-2').removeClass('hidden')
+      $('#evaluation-1 a').click -> $('#evaluation-1').hide()
 
 window.search = new Search()

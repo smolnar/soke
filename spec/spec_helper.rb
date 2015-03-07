@@ -70,4 +70,5 @@ RSpec.configure do |config|
 
   config.include AuthenticationHelper
   config.include FixtureHelper
+  config.include RemoteHelper
 end
