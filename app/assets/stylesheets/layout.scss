@@ -8,6 +8,11 @@
   background: none;
 }
 
+section {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 ul.user-controls {
   @extend .list-inline;
 
@@ -135,7 +140,7 @@ ul.user-controls {
   padding-left: 30px;
   padding-right: 30px;
 
-  li {
+  li.result {
     margin-bottom: 30px;
 
     a {
