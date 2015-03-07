@@ -68,5 +68,6 @@ RSpec.configure do |config|
   # FactoryGirl
   config.include FactoryGirl::Syntax::Methods
 
+  config.include AuthenticationHelper
   config.include FixtureHelper
 end
