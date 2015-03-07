@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20150307180831) do
     t.datetime "updated_at"
   end
 
-  add_index "results", ["search_id", "page_id"], name: "index_results_on_search_id_and_page_id", unique: true, using: :btree
+  add_index "results", ["search_id", "page_id", "position"], name: "index_results_on_search_id_and_page_id_and_position", unique: true, using: :btree
 
   create_table "searches", force: true do |t|
     t.integer  "query_id",   null: false

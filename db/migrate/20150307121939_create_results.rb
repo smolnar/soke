@@ -10,6 +10,6 @@ class CreateResults < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :results, [:search_id, :page_id], unique: true
+    add_index :results, [:search_id, :page_id, :position], unique: true
   end
 end
