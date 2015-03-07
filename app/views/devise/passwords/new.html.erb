@@ -1,4 +1,5 @@
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, class: 'devise-form' }) do |f| %>
+  <%= flash_messages %>
   <%= form_messages_for resource %>
 
   <h3 class="heading">Reset password</h3>
