@@ -9,7 +9,7 @@ class SearchComposer
       search = Search.create!(query: query, user: user, session: Session.create!)
     end
 
-    results.each_with_index do |result, index|
+    results.each_with_index.map do |result, index|
       page = Page.find_or_initialize_by(url: result.url)
 
       page.title       = result.title
@@ -21,7 +21,5 @@ class SearchComposer
 
       Result.find_or_create_by!(search: search, page: page, position: index + (params[:page] - 1) * 10)
     end
-
-    results
   end
 end

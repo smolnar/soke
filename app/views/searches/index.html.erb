@@ -45,12 +45,12 @@
     <ul class="list-unstyled">
       <% @results.each do |result| %>
         <li class="result">
-          <a href="<%= result.url %>" target="_blank"><%= result.title %></a>
+          <%= link_to result.page.title, result_path(result, url: result.page.url), target: :_blank %>
 
-          <div class="text-muted"><%= result.url  %></div>
+          <div class="text-muted"><%= result.page.url  %></div>
 
           <p>
-            <%= result.description %>
+            <%= result.page.description %>
           </p>
         </li>
       <% end %>

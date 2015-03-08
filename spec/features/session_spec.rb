@@ -172,5 +172,32 @@ describe 'Session' do
         expect(results.pluck(:position).sort).to eql((0..19).to_a)
       end
     end
+
+    context 'when clicking on search results' do
+      it 'logs clicks with timestamp', js: true do
+        Bing::Search.stub(:download) { fixture('bing/harry_potter_7.json').read }
+
+        visit root_path
+
+        fill_in 'q', with: 'harry potter 7'
+
+        wait_for_remote
+
+        click_link 'harry potter 7 part 1'
+
+        wait_for_remote
+
+        click_link 'Harry Potter and the Deathly Hallows: Part 1 (2010) - IMDb'
+
+        wait_for_remote
+
+        page = Page.find_by(url: 'http://www.imdb.com/title/tt0926084/')
+        result = page.results.last
+
+        expect(result.clicked_at).not_to be_nil
+        expect(result.clicked_at).to be > Time.now - 3.seconds
+        expect(result.clicked_at).to be < Time.now + 3.seconds
+      end
+    end
   end
 end

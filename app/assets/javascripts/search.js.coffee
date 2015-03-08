@@ -27,6 +27,7 @@ class window.Search
     onReady =>
       $('#q').autocomplete
         minLength: 0
+        delay: 200
         source: =>
           for name, callback of @callbacks
             callback.call(@)
