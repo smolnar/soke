@@ -1,4 +1,7 @@
 defaults: &defaults
+  devise:
+    key: TODO
+
   bing:
     key: TODO
 
