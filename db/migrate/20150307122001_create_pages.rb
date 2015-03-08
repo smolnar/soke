@@ -2,7 +2,7 @@ class CreatePages < ActiveRecord::Migration
   def change
     create_table :pages do |t|
       t.string :title,       null: false
-      t.string :url,         null: false
+      t.string :url,         null: false, limit: 2048
       t.text   :description, null: false
       t.string :bing_uuid,   null: false
 

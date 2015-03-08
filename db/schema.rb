@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307180831) do
+ActiveRecord::Schema.define(version: 20150308004439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "pages", force: true do |t|
-    t.string   "title",       null: false
-    t.string   "url",         null: false
-    t.text     "description", null: false
-    t.string   "bing_uuid",   null: false
+    t.string   "title",                    null: false
+    t.string   "url",         limit: 2048, null: false
+    t.text     "description",              null: false
+    t.string   "bing_uuid",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,11 +48,12 @@ ActiveRecord::Schema.define(version: 20150307180831) do
   add_index "results", ["search_id", "page_id", "position"], name: "index_results_on_search_id_and_page_id_and_position", unique: true, using: :btree
 
   create_table "searches", force: true do |t|
-    t.integer  "query_id",   null: false
+    t.integer  "query_id",     null: false
     t.integer  "session_id"
-    t.integer  "user_id",    null: false
+    t.integer  "user_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "annotated_at"
   end
 
   add_index "searches", ["query_id"], name: "index_searches_on_query_id", using: :btree
