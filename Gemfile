@@ -16,6 +16,7 @@ gem 'font-awesome-rails', '~> 4.0.3'
 
 # Javascripts
 gem 'handlebars_assets'
+gem 'jquery-ui-rails'
 
 # Utilities
 gem 'scout', github: 'smolnar/scout', branch: :master

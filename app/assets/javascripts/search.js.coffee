@@ -25,9 +25,11 @@ class window.Search
 
   setup: ->
     onReady =>
-      $('#q').on 'input', =>
-        for name, callback of @callbacks
-          callback.call(@)
+      $('#q').autocomplete
+        minLength: 0
+        source: =>
+          for name, callback of @callbacks
+            callback.call(@)
 
   setSuggestionsElementSize: ->
     $('#suggestions').width($('#q').width() + 2)
