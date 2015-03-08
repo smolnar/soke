@@ -1,3 +1,7 @@
+body {
+  height: 100%;
+}
+
 .container {
   margin-top: 20px;
   max-width: 940px;
@@ -155,6 +159,22 @@ ul.user-controls {
 
   #evaluation-1 a, #evaluation-2 ul a {
     font-size: 12pt;
+  }
+}
+
+#footer {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 60px;   /* Height of the footer */
+   text-align: center;
+
+   a {
+     color: #787878;
+
+     &:hover {
+      text-decoration: underline;
+     }
   }
 }
 
