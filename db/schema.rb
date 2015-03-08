@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150308004439) do
 
   create_table "searches", force: true do |t|
     t.integer  "query_id",     null: false
-    t.integer  "session_id"
+    t.integer  "session_id",   null: false
     t.integer  "user_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
