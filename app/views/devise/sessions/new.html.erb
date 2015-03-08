@@ -1,8 +1,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'devise-form' }) do |f|  %>
-  <%= flash_messages %>
   <%= form_messages_for resource %>
 
-  <h2 class="heading">Sign in</h2>
+  <h2 class="heading">Log in</h2>
 
   <%= f.label :email, for: 'email', class: 'sr-only' %>
   <%= f.text_field :email, id: 'email', class: 'form-control', placeholder: 'Email address', autofocus: true %>
@@ -20,5 +19,5 @@
     </div>
   <% end -%>
 
-  <%= f.submit 'Sign me in!', class: 'btn btn-lg btn-primary btn-block' %>
+  <%= f.submit 'Log me in!', class: 'btn btn-lg btn-default btn-block' %>
 <% end %>
