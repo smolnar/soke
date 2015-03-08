@@ -18,7 +18,7 @@
       </p>
     </div>
 
-    <% if @previous_sessions.any? %>
+    <% if @other_sessions.any? %>
       <div id="evaluation-2" class="hidden bs-callout bs-callout-default">
         <h4>
           Choose other related query
@@ -26,7 +26,7 @@
 
         <p>
           <ul class="list-inline">
-            <% @previous_sessions.each do |session| %>
+            <% @other_sessions.each do |session| %>
               <li>
                 <%= link_to session.searches.last.query.value, merge_session_search_path(session, @search), remote: true %>
               </li>
