@@ -9,6 +9,8 @@ defaults: &defaults
     username: TODO
     password: TODO
 
+  secret_token: TODO
+
 development:
   <<: *defaults
 
