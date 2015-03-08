@@ -80,4 +80,13 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: '37.205.9.136:1337' }
+
+  config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: '[soke][error] ',
+      sender_address: %{'naRuby' <naruby@otvoreneprojekty.sk>},
+      exception_recipients: %w{molnar.samuel@gmail.com}
+  }
 end

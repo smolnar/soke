@@ -5,6 +5,10 @@ defaults: &defaults
   bing:
     key: TODO
 
+  mailer:
+    username: TODO
+    password: TODO
+
 development:
   <<: *defaults
 

@@ -45,6 +45,14 @@ group :development, :test do
   gem 'guard-rspec'
 end
 
+# Production
+group :production do
+  gem 'unicorn'
+  gem 'rack-timeout'
+  gem 'exception_notification'
+end
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
