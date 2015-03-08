@@ -1,14 +1,14 @@
 <section>
-  <% @sessions.each_with_index do |session, index| %>
+  <% @sessions.each do |session| %>
     <h3>
-      Session #<%= index %>
+      Session #<%= session.id %>
 
       <small><%= l(session.created_at, format: :long) %></small>
     </h3>
 
     <ul>
-      <% session.queries.each do |query| %>
-        <li><h5><%= query.value %></h5></li>
+      <% session.searches.order(:created_at).each do |search| %>
+        <li><h5><%= search.query.value %></h5></li>
       <% end  %>
     </ul>
 

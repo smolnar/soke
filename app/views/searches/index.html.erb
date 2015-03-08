@@ -4,7 +4,7 @@
   <% end %>
 </section>
 
-<% if @query && @previous_query && @search.session.queries.size < 2 %>
+<% if @previous_query && !@search.annotated_at %>
   <section id="evaluations">
     <div id="evaluation-1" class="bs-callout bs-callout-default">
       <h4>
@@ -33,7 +33,7 @@
             <% end  %>
           </ul>
 
-          <p class="text-muted">Click <%= link_to 'here', merge_session_search_path(@current_session, @search) %> when none is related.</p>
+          <p class="text-muted">Click <%= link_to 'here', merge_session_search_path(@current_session, @search), remote: true %> when none is related.</p>
         </p>
       </div>
     <% end %>
