@@ -3,12 +3,10 @@ class SearchComposer
     results = Bing::Search.get(query, page: params[:page] - 1)
     query   = Query.find_or_create_by!(value: query)
 
-    search = Search.create!(query: query, user: user)
-
-    if user.sessions.empty?
-      search.session = Session.create!
-
-      search.save!
+    if user.searches.any? && user.searches.last.query == query
+      search = user.searches.last
+    else
+      search = Search.create!(query: query, user: user, session: Session.create!)
     end
 
     results.each_with_index do |result, index|
@@ -21,7 +19,7 @@ class SearchComposer
 
       page.save!
 
-      Result.create!(search: search, page: page, position: params[:page] * index)
+      Result.find_or_create_by!(search: search, page: page, position: params[:page] * index)
     end
 
     results

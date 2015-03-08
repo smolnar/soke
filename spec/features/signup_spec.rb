@@ -4,7 +4,7 @@ describe 'Sign up' do
   it 'signs up user' do
     visit root_path
 
-    click_link 'Sign up'
+    click_link 'Join'
 
     fill_in 'email', with: 'alig@westside.biz'
 
@@ -20,7 +20,7 @@ describe 'Sign up' do
     expect(page).to have_link('Logout')
 
     click_link 'Logout'
-    click_link 'Sign in'
+    click_link 'Log in'
 
     fill_in 'email', with: 'alig@westside.biz'
     fill_in 'password', with: 'password123'

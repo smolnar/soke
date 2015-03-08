@@ -4,7 +4,7 @@
   <% end %>
 </section>
 
-<% if @query && !@search.session %>
+<% if @query && @previous_query && @search.session.queries.size < 2 %>
   <section id="evaluations">
     <div id="evaluation-1" class="bs-callout bs-callout-default">
       <h4>
@@ -12,23 +12,31 @@
       </h4>
 
       <p class="text-muted">
-        <%= link_to 'Yes', merge_session_search_path(@current_session, @search), remote: true %>
+        <%= link_to 'Yes', merge_session_search_path(@previous_session, @search), remote: true %>
         &middot;
         <a href="#" class="no">No</a>
       </p>
     </div>
 
-    <div id="evaluation-2" class="hidden bs-callout bs-callout-default">
-      <h4>
-        Choose other related query
-      </h4>
+    <% if @previous_sessions.any? %>
+      <div id="evaluation-2" class="hidden bs-callout bs-callout-default">
+        <h4>
+          Choose other related query
+        </h4>
 
-      <ul class="list-inline">
-        <% @previous_sessions.each do |session| %>
-          <li><%= session.searches.last.query.value %></li>
-        <% end  %>
-      </ul>
-    </div>
+        <p>
+          <ul class="list-inline">
+            <% @previous_sessions.each do |session| %>
+              <li>
+                <%= link_to session.searches.last.query.value, merge_session_search_path(session, @search), remote: true %>
+              </li>
+            <% end  %>
+          </ul>
+
+          <p class="text-muted">Click <%= link_to 'here', merge_session_search_path(@current_session, @search) %> when none is related.</p>
+        </p>
+      </div>
+    <% end %>
   </section>
 <% end %>
 

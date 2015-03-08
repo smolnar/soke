@@ -7,8 +7,9 @@ class SearchesController < ApplicationController
       @results = SearchComposer.compose(@query, user: current_user, params: params)
       @search = current_user.searches.last
       @current_session = current_user.sessions.last
-      @previous_query = @current_session.queries.last
       @previous_sessions = current_user.sessions.where.not(id: @current_session).last(5)
+      @previous_session = @previous_sessions.last
+      @previous_query = @previous_session.queries.last if @previous_sessions.any?
     end
   end
 
@@ -16,7 +17,12 @@ class SearchesController < ApplicationController
     @search  = Search.find(params[:id])
     @session = Session.find(params[:session_id])
 
+    if @search.session.searches.count == 1 && @session != @search.session
+      @search.session.destroy!
+    end
+
     @search.session = @session
+    @search.annotated_at = Time.now
 
     @search.save!
 
