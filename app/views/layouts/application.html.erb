@@ -7,42 +7,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div id="wrapper">
   <div id="main" class="container">
-    <div class="navbar navbar-default navbar">
-      <div class="navbar-header">
-        <a class="navbar-brand logo" href="/">&Oslash;</a>
-      </div>
+      <div class="navbar navbar-default navbar">
+        <div class="navbar-header">
+          <a class="navbar-brand logo" href="/">&Oslash;</a>
+        </div>
 
-      <div class="collapse navbar-collapse">
-        <ul class="pull-right user-controls">
-            <% if user_signed_in? %>
-            <li>
-                <%= link_to sessions_path do %>
-                  <b><%= current_user.email %></b>
-                <% end %>
-              </li>
-
+        <div class="collapse navbar-collapse">
+          <ul class="pull-right user-controls">
+              <% if user_signed_in? %>
               <li>
-                <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-              </li>
-            <% else %>
-              <li><%= link_to 'Join', new_user_registration_path %></li>
-              <li><%= link_to 'Log in', new_user_session_path %></li>
-            <% end %>
-        </ul>
+                  <%= link_to sessions_path do %>
+                    <b><%= current_user.email %></b>
+                  <% end %>
+                </li>
+
+                <li>
+                  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li><%= link_to 'Join', new_user_registration_path %></li>
+                <li><%= link_to 'Log in', new_user_session_path %></li>
+              <% end %>
+          </ul>
+        </div>
       </div>
+
+      <%= yield %>
     </div>
 
-    <%= yield %>
-  </div>
-
-  <div id="footer">
-    <p class="text-muted">
-      Copyright 2014 &middot;
-      <a href="http://github.com/smolnar/soke" >GitHub</a> &middot;
-      <a href="https://twitter.com/samuelmolnar" target="_blank">Samuel Molnár</a>
-    </p>
+    <div id="footer">
+      <p class="text-muted">
+        Copyright 2014 &middot;
+        <a href="http://github.com/smolnar/soke" >GitHub</a> &middot;
+        <a href="https://twitter.com/samuelmolnar" target="_blank">Samuel Molnár</a>
+      </p>
+    </div>
   </div>
 </body>
 </html>
