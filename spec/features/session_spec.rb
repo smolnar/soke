@@ -125,19 +125,51 @@ describe 'Session' do
 
         visit root_path
 
-        fill_in 'q', with: 'harry potter movie'
+        fill_in 'q', with: 'harry potter 7'
 
         wait_for_remote
 
-        click_link 'harry potter movies'
+        click_link 'harry potter 7 part 1'
 
         wait_for_remote
-
-        expect(page).not_to have_css('#evaluations')
 
         query = Query.find_by(value: 'harry potter movies')
 
         expect(query.sessions.last.searches.size).to eql(3)
+      end
+    end
+
+    context 'when paginating' do
+      it 'uses the same search', js: true do
+        Bing::Search.stub(:download) { fixture('bing/harry_potter_7.json').read }
+
+        visit root_path
+
+        fill_in 'q', with: 'harry potter 7'
+
+        wait_for_remote
+
+        click_link 'harry potter 7 part 1'
+
+        wait_for_remote
+
+        query = Query.find_by(value: 'harry potter 7 part 1')
+
+        expect(query.searches.size).to eql(1)
+        expect(query.searches.first.results.size).to eql(10)
+
+        Bing::Search.stub(:download) { fixture('bing/harry_potter_7_page_2.json').read }
+
+        click_link 'Next'
+
+        wait_for_remote
+
+        query = Query.find_by(value: 'harry potter 7 part 1')
+        results = query.searches.first.results
+
+        expect(query.searches.size).to eql(1)
+        expect(results.size).to eql(20)
+        expect(results.pluck(:position).sort).to eql((0..19).to_a)
       end
     end
   end

@@ -19,7 +19,7 @@ class SearchComposer
 
       page.save!
 
-      Result.find_or_create_by!(search: search, page: page, position: params[:page] * index)
+      Result.find_or_create_by!(search: search, page: page, position: index + (params[:page] - 1) * 10)
     end
 
     results
