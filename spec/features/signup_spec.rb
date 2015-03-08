@@ -25,7 +25,7 @@ describe 'Sign up' do
     fill_in 'email', with: 'alig@westside.biz'
     fill_in 'password', with: 'password123'
 
-    click_button 'Sign me in!'
+    click_button 'Log me in!'
 
     expect(page).to have_link('alig@westside.biz')
   end

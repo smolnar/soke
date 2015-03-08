@@ -5,6 +5,6 @@ module AuthenticationHelper
     fill_in 'email', with: user.email
     fill_in 'password', with: password || user.password
 
-    click_button 'Sign me in!'
+    click_button 'Log me in!'
   end
 end
