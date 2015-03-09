@@ -5,4 +5,6 @@ class Search < ActiveRecord::Base
 
   has_many :results
   has_many :pages, -> { uniq }, through: :results
+
+  scope :annotated, -> { where.not(annotated_at: nil) }
 end

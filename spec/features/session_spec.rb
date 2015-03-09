@@ -199,5 +199,39 @@ describe 'Session' do
         expect(result.clicked_at).to be < Time.now + 3.seconds
       end
     end
+
+    context 'when choosing session other than previous one' do
+      it 'shows chosen session as previous one in next evaluation', js: true do
+        Bing::Search.stub(:download) { fixture('bing/google_maps.json').read }
+
+        visit search_path
+
+        fill_in 'q', with: 'california maps'
+
+        wait_for_remote
+
+        click_link 'california maps google'
+
+        wait_for_remote
+
+        within '#evaluations' do
+          expect(page).to have_content('Is this query related to your last one – harry potter movies?')
+
+          click_link 'No'
+
+          click_link 'google maps california'
+        end
+
+        fill_in 'q', with: 'california places'
+
+        click_link 'california places to visit'
+
+        wait_for_remote
+
+        within '#evaluations' do
+          expect(page).to have_content('Is this query related to your last one – california maps google?')
+        end
+      end
+    end
   end
 end
