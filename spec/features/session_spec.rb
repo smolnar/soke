@@ -45,19 +45,19 @@ describe 'Session' do
     before :each do
       session = create(:session)
 
-      create :search, session: session, query: create(:query, value: 'google maps'), user: user
-      create :search, session: session, query: create(:query, value: 'google maps california'), user: user
+      create :search, :annotated, session: session, query: create(:query, value: 'google maps'), user: user
+      create :search, :annotated, session: session, query: create(:query, value: 'google maps california'), user: user
 
       session = create(:session)
 
-      create :search, session: session, query: create(:query, value: 'harry potter'), user: user
-      create :search, session: session, query: create(:query, value: 'harry potter books'), user: user
+      create :search, :annotated, session: session, query: create(:query, value: 'harry potter'), user: user
+      create :search, :annotated, session: session, query: create(:query, value: 'harry potter books'), user: user
 
       session = create(:session)
 
-      create :search, session: session, query: Query.find_by(value: 'harry potter'), user: user
-      create :search, session: session, query: create(:query, value: 'rowling'), user: user
-      create :search, session: session, query: create(:query, value: 'harry potter movies'), user: user
+      create :search, :annotated, session: session, query: Query.find_by(value: 'harry potter'), user: user
+      create :search, :annotated, session: session, query: create(:query, value: 'rowling'), user: user
+      create :search, :annotated, session: session, query: create(:query, value: 'harry potter movies'), user: user
     end
 
     it 'assigns query to current session', js: true do

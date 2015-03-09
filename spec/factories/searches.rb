@@ -3,5 +3,9 @@ FactoryGirl.define do
     association :query
     association :session
     association :user
+
+    trait :annotated do
+      annotated_at { Time.now }
+    end
   end
 end
