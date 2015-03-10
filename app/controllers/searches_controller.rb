@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
       @results = SearchComposer.compose(@query, user: current_user, params: params)
       @search = current_user.searches.last
       @current_session = current_user.sessions.last
-      @previous_sessions = current_user.sessions.where.not(id: [@current_session]).order(:created_at).last(6)
+      @previous_sessions = current_user.sessions.where.not(id: [@current_session]).order(:created_at).last(9)
       @previous_session = current_user.searches.annotated.order(:created_at).last.try(:session) || @previous_sessions.last
       @other_sessions = (@previous_sessions - [@previous_session]).first(5)
       @previous_query = @previous_session.searches.order(:created_at).last.query if @previous_session
