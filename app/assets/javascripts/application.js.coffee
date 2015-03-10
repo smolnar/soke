@@ -17,6 +17,6 @@
 #= require turbolinks
 #= require handlebars.runtime
 #= require_tree ./templates
+#= require core
 #= require fixes
-#= require utilities
 #= require_tree .

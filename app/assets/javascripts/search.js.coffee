@@ -22,6 +22,7 @@ class window.Search
   constructor: ->
     @setup()
     @setupEvaluation()
+    @setupSuggestions()
 
   setup: ->
     onReady =>
@@ -34,6 +35,16 @@ class window.Search
 
   setSuggestionsElementSize: ->
     $('#suggestions').width($('#q').width() + 2)
+
+
+  setupSuggestions: ->
+    onReady =>
+      $(document).click ->
+        unless $(event.target).closest('#suggestions').length
+          $('#suggestions').hide() if $('#suggestions').is(':visible')
+
+      $(document).keyup (event) ->
+        $('#suggestions').hide() if event.keyCode == 27
 
   setupEvaluation: ->
     onReady ->
