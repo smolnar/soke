@@ -14,6 +14,16 @@ describe Google::Suggest do
       expect(suggestions[1]).to eql('gmail')
     end
 
+    it 'correctly handles encodes unicode response' do
+      downloader = double(:downloader)
+
+      downloader.stub(:download).with('http://google.com/complete/search?q=slovnik&client=chrome') { fixture('google/suggest_with_unicode.json').read }
+
+      suggestions = Google::Suggest.for('slovnik', downloader: downloader)
+
+      expect(suggestions[5]).to eql('slovník spisovné češtiny')
+    end
+
     context 'when suggestion contain resources other than queries' do
       it 'ommits them' do
         downloader = double(:downloader)
