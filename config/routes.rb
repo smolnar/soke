@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     sign_in: 'login',
     sign_out: 'logout',
     confirmation: 'verification',
-    sign_up: 'join'
+    sign_up: 'signup'
   }
 
   devise_scope :user do

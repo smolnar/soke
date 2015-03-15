@@ -4,7 +4,7 @@ describe 'Sign up' do
   it 'signs up user' do
     visit root_path
 
-    click_link 'Join'
+    click_link 'Sign up'
 
     fill_in 'email', with: 'alig@westside.biz'
 

@@ -11,7 +11,7 @@
   <%= f.password_field :password, id: 'password', class: 'form-control', placeholder: 'Password' %>
 
   <div class="checkbox">
-    <%= link_to 'Did you forget your password?', new_password_path(resource_name), class: 'pull-right' %>
+    <%= link_to 'Already signed up?', new_session_path(resource_name), class: 'pull-right' %>
   </div>
 
   <%= f.submit 'Sign me up!', class: 'btn btn-lg btn-default btn-block' %>
