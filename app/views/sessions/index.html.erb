@@ -6,7 +6,7 @@
       <small><%= l(session.created_at, format: :long) %></small>
     </h3>
 
-    <%= form_for session, url: session_edit_path(session) do |f| %>
+    <%= form_for session, url: session_edit_path(session), remote: true do |f| %>
       <%= f.fields_for :searches, session.searches.order(:updated_at) do |ff| %>
         <div id="search_<%= ff.object.id %>" class="row">
           <div class="col-md-6">

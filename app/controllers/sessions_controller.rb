@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
 
     @session.destroy unless @session.queries.any?
 
-    redirect_to sessions_path
+    # redirect_to sessions_path
+    render status: 200, nothing: true
   end
 
   private

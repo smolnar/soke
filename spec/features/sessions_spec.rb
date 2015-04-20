@@ -35,7 +35,7 @@ describe 'Sessions' do
   end
 
   context 'when all queries are moved from session' do
-    it 'removes the session' do
+    it 'removes the session', js: true do
       visit root_path
 
       click_link user.email
@@ -47,6 +47,8 @@ describe 'Sessions' do
 
         click_button 'Save'
       end
+
+      sleep 2
 
       queries = sessions[0].queries.pluck(:value)
 
@@ -60,7 +62,7 @@ describe 'Sessions' do
     end
   end
 
-  it 'moves query to a new session' do
+  it 'moves query to a new session', js: true do
     visit root_path
 
     click_link user.email
@@ -72,6 +74,8 @@ describe 'Sessions' do
 
       click_button 'Save'
     end
+
+    sleep 2
 
     search.reload
 
