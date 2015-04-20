@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :results, only: [:show]
 
   resources :sessions, only: [:index] do
+    patch :update, as: :edit
+
     resources :searches, only: [] do
       get :merge, on: :member
     end

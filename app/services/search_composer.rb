@@ -6,7 +6,7 @@ class SearchComposer
     if user.searches.any? && user.searches.last.query == query
       search = user.searches.last
     else
-      search = Search.create!(query: query, user: user, session: Session.create!)
+      search = Search.create!(query: query, user: user)
     end
 
     results.each_with_index.map do |result, index|
