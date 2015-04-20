@@ -22,7 +22,7 @@ describe 'Sessions' do
     click_link user.email
 
     within "#edit_session_#{sessions[1].id}" do
-      select sessions[0].name, from: "session_searches_attributes_2_session_id"
+      select sessions[0].name, from: "session_searches_attributes_0_session_id"
       select sessions[0].name, from: "session_searches_attributes_1_session_id"
 
       click_button 'Save'
@@ -65,7 +65,7 @@ describe 'Sessions' do
 
     click_link user.email
 
-    search = sessions[1].searches[2]
+    search = sessions[1].searches.order(:created_at)[2]
 
     within "#edit_session_#{sessions[1].id}" do
       select 'New Session', from: "session_searches_attributes_2_session_id"
