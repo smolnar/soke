@@ -26,8 +26,5 @@ module Bing
       curl.perform
       curl.body_str
     end
-
-    def self.parse(data)
-    end
   end
 end
