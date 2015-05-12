@@ -12,12 +12,13 @@ namespace :dump do
 
       session[:interactions] = []
 
-      s.searches.order(:created_at).each do |search|
+      s.searches.order(:updated_at).each do |search|
         interaction = Hash.new
 
         interaction[:id] = interaction[:number] = search.id
         interaction[:query] = search.query.value
-        interaction[:start_time] = search.created_at
+        interaction[:start_time] = search.updated_at
+        interaction[:annotated_at] = search.annotated_at
 
         interaction[:results] = []
 
